@@ -13,28 +13,12 @@ public class RequestManager {
 
     private static RequestManager instance;
     private RequestQueue requestQueue;
-    //private ImageLoader mImageLoader;
     private static Context context;
 
     private RequestManager(Context context) {
         this.context = context;
         this.requestQueue = getRequestQueue();
 
-        /*mImageLoader = new ImageLoader(requestQueue,
-                new ImageLoader.ImageCache() {
-                    private final LruCache<String, Bitmap>
-                            cache = new LruCache<String, Bitmap>(20);
-
-                    @Override
-                    public Bitmap getBitmap(String url) {
-                        return cache.get(url);
-                    }
-
-                    @Override
-                    public void putBitmap(String url, Bitmap bitmap) {
-                        cache.put(url, bitmap);
-                    }
-                });*/
     }
 
     public static synchronized RequestManager getInstance(Context context) {
@@ -56,10 +40,5 @@ public class RequestManager {
     public <T> void addToRequestQueue(Request<T> req) {
         getRequestQueue().add(req);
     }
-
-    /*public ImageLoader getImageLoader() {
-        return mImageLoader;
-    }*/
-
 
 }
